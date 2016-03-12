@@ -4,9 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run sagui:test",
+    "sagui:test": "sagui test",
+    "sagui:test-watch": "sagui test --watch",
+    "sagui:develop": "sagui develop",
+    "sagui:build": "sagui build",
+    "sagui:dist": "sagui dist",
+    "start": "npm run sagui:develop"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "sagui": "^3.3.0"
+  }
 }
