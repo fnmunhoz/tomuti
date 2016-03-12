@@ -1,7 +1,9 @@
 import style from './index.css'
 
-const div = document.createElement('div')
-div.innerHTML = '<h1>Hello World</h1>'
-div.className = style.component
+var React = require('react')
+var ReactDOM = require('react-dom')
 
-document.getElementById('tomuti').appendChild(div)
+ReactDOM.render(
+  <h1 className={style.component}>Hello world from React!</h1>,
+  document.getElementById('tomuti')
+)
