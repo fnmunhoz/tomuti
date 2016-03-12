@@ -1,10 +1,9 @@
 import style from './index.css'
 import { createStore } from 'redux'
+import Ticker from './Ticker'
 
 var React = require('react')
 var ReactDOM = require('react-dom')
-
-import Ticker from './Ticker'
 
 const startToggle = () => {
   store.dispatch({
