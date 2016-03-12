@@ -1,6 +1,6 @@
 import style from './ticker.css'
 
-import StartButton from './start-button'
+import StartButton from './StartButton'
 
 var React = require('react')
 

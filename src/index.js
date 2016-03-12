@@ -4,7 +4,7 @@ import { createStore } from 'redux'
 var React = require('react')
 var ReactDOM = require('react-dom')
 
-import Ticker from './ticker'
+import Ticker from './Ticker'
 
 const startToggle = () => {
   store.dispatch({
