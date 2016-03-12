@@ -17,5 +17,9 @@
   "license": "ISC",
   "devDependencies": {
     "sagui": "^3.3.0"
+  },
+  "dependencies": {
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
   }
 }
