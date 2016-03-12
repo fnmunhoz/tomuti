@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "redux-devtools": "^3.1.1",
     "sagui": "^3.3.0"
   },
   "dependencies": {
