@@ -20,7 +20,6 @@ const storeManager = (state, action) => {
     } else if (state.status === 'stopped') {
       return { status: 'running' }
     }
-
   }
   return { status: 'stopped' }
 }
