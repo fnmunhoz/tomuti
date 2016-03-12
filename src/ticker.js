@@ -15,6 +15,6 @@ export default React.createClass({
   },
 
   clickStart: function () {
-    console.log('start');
+    console.log('start')
   }
 })
