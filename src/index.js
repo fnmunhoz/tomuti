@@ -6,16 +6,21 @@ var ReactDOM = require('react-dom')
 
 import Ticker from './ticker'
 
-const clickStart = () => {
+const startToggle = () => {
   store.dispatch({
-    type: 'STARTED',
+    type: 'START_TOGGLE',
     status: 'running'
   })
 }
 
 const storeManager = (state, action) => {
-  if (action.type === 'STARTED') {
-    return { status: 'running' }
+  if (action.type === 'START_TOGGLE') {
+    if (state.status === 'running') {
+      return { status: 'stopped' }
+    } else if (state.status === 'stopped') {
+      return { status: 'running' }
+    }
+
   }
   return { status: 'stopped' }
 }
@@ -27,7 +32,7 @@ const render = () => {
     <Ticker
       value={store.getState()}
       className={style.component}
-      clickStart={clickStart}
+      startToggle={startToggle}
     />,
     document.getElementById('tomuti')
   )
