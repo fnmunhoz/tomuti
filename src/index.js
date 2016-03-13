@@ -11,15 +11,31 @@ const startToggle = () => {
   })
 }
 
-const storeManager = (state, action) => {
-  if (action.type === 'START_TOGGLE') {
-    if (state.status === 'running') {
-      return { status: 'stopped' }
-    } else if (state.status === 'stopped') {
-      return { status: 'running' }
-    }
+const initialState = {
+  status: 'stopped'
+}
+
+const startToggleManager = (state) => {
+  switch (state.status) {
+    case 'running':
+      return {
+        status: 'stopped'
+      }
+    case 'stopped':
+      return {
+        status: 'running'
+      }
   }
-  return { status: 'stopped' }
+}
+
+const storeManager = (state = initialState, action) => {
+  switch (action.type) {
+    case 'START_TOGGLE':
+      return startToggleManager(state)
+
+    default:
+      return state
+  }
 }
 
 let store = createStore(storeManager)
