@@ -11,19 +11,43 @@ const startToggle = () => {
   })
 }
 
+const tick = () => {
+  store.dispatch({
+    type: 'TICK'
+  })
+}
+
 const initialState = {
-  status: 'stopped'
+  status: 'stopped',
+  tick: 0
 }
 
 const startToggleManager = (state) => {
   switch (state.status) {
     case 'running':
       return {
-        status: 'stopped'
+        status: 'stopped',
+        tick: 0
       }
     case 'stopped':
       return {
-        status: 'running'
+        status: 'running',
+        tick: 0
+      }
+  }
+}
+
+const tickManager = (state) => {
+switch (state.status) {
+    case 'running':
+      return {
+        status: state.status,
+        tick: state.tick + 1
+      }
+    case 'stopped':
+      return {
+        status: state.status,
+        tick: 0
       }
   }
 }
@@ -32,6 +56,8 @@ const storeManager = (state = initialState, action) => {
   switch (action.type) {
     case 'START_TOGGLE':
       return startToggleManager(state)
+    case 'TICK':
+      return tickManager(state)
 
     default:
       return state
@@ -46,6 +72,7 @@ const render = () => {
       value={store.getState()}
       className={style.component}
       startToggle={startToggle}
+      tick={tick}
     />,
     document.getElementById('tomuti')
   )
