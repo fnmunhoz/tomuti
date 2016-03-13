@@ -1,3 +1,5 @@
+import style from './countdown.css'
+
 var React = require('react')
 
 export default React.createClass({
@@ -8,10 +10,9 @@ export default React.createClass({
 
   render: function () {
     return (
-      <div>
+      <div className={style.label}>
         {this.format()}
       </div>
-
     )
   },
 
