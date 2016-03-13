@@ -24,6 +24,18 @@ const initialState = {
   startedAt: undefined
 }
 
+const storeManager = (state = initialState, action) => {
+  switch (action.type) {
+    case 'START_TOGGLE':
+      return startToggleManager(state)
+    case 'TICK':
+      return tickManager(state)
+
+    default:
+      return state
+  }
+}
+
 const startToggleManager = (state) => {
   switch (state.status) {
     case 'running':
@@ -55,18 +67,6 @@ const tickManager = (state) => {
         tick: 0,
         startedAt: state.startedAt
       }
-  }
-}
-
-const storeManager = (state = initialState, action) => {
-  switch (action.type) {
-    case 'START_TOGGLE':
-      return startToggleManager(state)
-    case 'TICK':
-      return tickManager(state)
-
-    default:
-      return state
   }
 }
 
