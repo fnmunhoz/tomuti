@@ -1,6 +1,6 @@
 import style from './index.css'
 import { createStore } from 'redux'
-import Ticker from './Ticker'
+import Ticker from './components/ticker'
 
 var React = require('react')
 var ReactDOM = require('react-dom')
@@ -74,7 +74,8 @@ let store = createStore(storeManager)
 const render = () => {
   ReactDOM.render(
     <Ticker
-      value={store.getState()}
+      status={store.getState().status}
+      startedAt={store.getState().startedAt}
       className={style.component}
       startToggle={startToggle}
       tick={tick}
