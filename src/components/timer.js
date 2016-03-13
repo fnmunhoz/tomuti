@@ -1,4 +1,4 @@
-import style from './ticker.css'
+import style from './timer.css'
 
 import StartButton from './start-button'
 import Countdown from './countdown'
