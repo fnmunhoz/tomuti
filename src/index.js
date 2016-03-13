@@ -1,5 +1,6 @@
 import style from './index.css'
 import { createStore } from 'redux'
+import ReactInterval from 'react-interval'
 import Ticker from './components/ticker'
 
 var React = require('react')
@@ -73,14 +74,16 @@ let store = createStore(storeManager)
 
 const render = () => {
   ReactDOM.render(
-    <Ticker
-      duration={25}
-      status={store.getState().status}
-      startedAt={store.getState().startedAt}
-      className={style.component}
-      startToggle={startToggle}
-      tick={tick}
-    />,
+    <div>
+      <ReactInterval timeout={100} enabled callback={tick} />
+      <Ticker
+        duration={25}
+        status={store.getState().status}
+        startedAt={store.getState().startedAt}
+        className={style.component}
+        startToggle={startToggle}
+      />
+    </div>,
     document.getElementById('tomuti')
   )
 }
