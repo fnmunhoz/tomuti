@@ -12,7 +12,8 @@ export default React.createClass({
     startedAt: React.PropTypes.number,
     durationMinutes: React.PropTypes.number,
     durationSeconds: React.PropTypes.number,
-    timeElapsed: React.PropTypes.number
+    timeElapsed: React.PropTypes.number,
+    quantity: React.PropTypes.number
   },
 
   render: function () {
@@ -26,6 +27,7 @@ export default React.createClass({
           timeElapsed={this.props.timeElapsed}
         />
         <StartButton onClick={this.props.startToggle} status={this.props.status} />
+        <p>Total: {this.props.quantity}</p>
       </div>
     )
   }

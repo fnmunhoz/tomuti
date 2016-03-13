@@ -111,8 +111,8 @@ const render = () => {
         status={store.getState().status}
         startedAt={store.getState().startedAt}
         startToggle={startToggle}
+        quantity={store.getState().quantity}
       />
-      <p>{store.getState().quantity}</p>
     </div>,
     document.getElementById('tomuti')
   )
