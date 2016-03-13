@@ -17,9 +17,9 @@ export default React.createClass({
   renderButton: function () {
     switch (this.props.status) {
       case 'running':
-        return style.stop
+        return `${style.stop} ${style.button}`
       case 'stopped':
-        return style.start
+        return `${style.start} ${style.button}`
     }
   }
 })
