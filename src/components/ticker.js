@@ -12,13 +12,14 @@ export default React.createClass({
     status: React.PropTypes.string,
     startToggle: React.PropTypes.func,
     tick: React.PropTypes.func,
-    startedAt: React.PropTypes.number
+    startedAt: React.PropTypes.number,
+    duration: React.PropTypes.number
   },
 
   render: function () {
     return (
       <div className={style.component}>
-        <Countdown startedAt={this.props.startedAt} />
+        <Countdown duration={this.props.duration} startedAt={this.props.startedAt} status={this.props.status} />
         <ReactInterval timeout={100} enabled callback={this.props.tick} />
         <StartButton onClick={this.props.startToggle} status={this.props.status} />
       </div>

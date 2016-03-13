@@ -74,6 +74,7 @@ let store = createStore(storeManager)
 const render = () => {
   ReactDOM.render(
     <Ticker
+      duration={25}
       status={store.getState().status}
       startedAt={store.getState().startedAt}
       className={style.component}
