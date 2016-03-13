@@ -7,8 +7,7 @@ var ReactDOM = require('react-dom')
 
 const startToggle = () => {
   store.dispatch({
-    type: 'START_TOGGLE',
-    status: 'running'
+    type: 'START_TOGGLE'
   })
 }
 
