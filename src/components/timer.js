@@ -10,14 +10,16 @@ export default React.createClass({
     status: React.PropTypes.string,
     startToggle: React.PropTypes.func,
     startedAt: React.PropTypes.number,
-    duration: React.PropTypes.number
+    durationMinutes: React.PropTypes.number,
+    durationSeconds: React.PropTypes.number,
   },
 
   render: function () {
     return (
       <div className={style.component}>
         <Countdown
-          duration={this.props.duration}
+          durationMinutes={this.props.durationMinutes}
+          durationSeconds={this.props.durationSeconds}
           startedAt={this.props.startedAt}
           status={this.props.status}
         />

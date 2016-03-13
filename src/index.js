@@ -76,7 +76,8 @@ const render = () => {
     <div>
       <ReactInterval timeout={100} enabled callback={tick} />
       <Timer
-        duration={25}
+        durationMinutes={0}
+        durationSeconds={26}
         status={store.getState().status}
         startedAt={store.getState().startedAt}
         startToggle={startToggle}

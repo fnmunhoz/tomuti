@@ -5,7 +5,8 @@ var React = require('react')
 export default React.createClass({
   propTypes: {
     startedAt: React.PropTypes.number,
-    duration: React.PropTypes.number
+    durationMinutes: React.PropTypes.number,
+    durationSeconds: React.PropTypes.number
   },
 
   render: function () {
@@ -27,12 +28,12 @@ export default React.createClass({
     let m, s
 
     if (this.props.startedAt) {
-      let time = new Date((this.props.duration * 60000) - (Date.now() - this.props.startedAt))
+      let time = new Date((((this.props.durationMinutes * 60) + this.props.durationSeconds)) * 1000 - (Date.now() - this.props.startedAt))
       m = pad(time.getMinutes().toString(), 2)
       s = pad(time.getSeconds().toString(), 2)
     } else {
-      m = this.props.duration
-      s = '00'
+      m = pad(this.props.durationMinutes.toString(), 2)
+      s = pad(this.props.durationSeconds.toString(), 2)
     }
 
     return `${m}:${s}`
