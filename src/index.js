@@ -19,7 +19,8 @@ const tick = () => {
 
 const initialState = {
   status: 'stopped',
-  tick: 0
+  tick: 0,
+  startedAt: undefined
 }
 
 const startToggleManager = (state) => {
@@ -27,27 +28,31 @@ const startToggleManager = (state) => {
     case 'running':
       return {
         status: 'stopped',
-        tick: 0
+        tick: 0,
+        startedAt: undefined
       }
     case 'stopped':
       return {
         status: 'running',
-        tick: 0
+        tick: 0,
+        startedAt: Date.now()
       }
   }
 }
 
 const tickManager = (state) => {
-switch (state.status) {
+  switch (state.status) {
     case 'running':
       return {
         status: state.status,
-        tick: state.tick + 1
+        tick: state.tick + 1,
+        startedAt: state.startedAt
       }
     case 'stopped':
       return {
         status: state.status,
-        tick: 0
+        tick: 0,
+        startedAt: state.startedAt
       }
   }
 }
