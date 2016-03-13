@@ -1,4 +1,3 @@
-import style from './index.css'
 import { createStore } from 'redux'
 import ReactInterval from 'react-interval'
 import Timer from './components/timer'
@@ -80,7 +79,6 @@ const render = () => {
         duration={25}
         status={store.getState().status}
         startedAt={store.getState().startedAt}
-        className={style.component}
         startToggle={startToggle}
       />
     </div>,
