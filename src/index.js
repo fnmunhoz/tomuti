@@ -1,7 +1,7 @@
 import style from './index.css'
 import { createStore } from 'redux'
 import ReactInterval from 'react-interval'
-import Ticker from './components/ticker'
+import Timer from './components/timer'
 
 var React = require('react')
 var ReactDOM = require('react-dom')
@@ -76,7 +76,7 @@ const render = () => {
   ReactDOM.render(
     <div>
       <ReactInterval timeout={100} enabled callback={tick} />
-      <Ticker
+      <Timer
         duration={25}
         status={store.getState().status}
         startedAt={store.getState().startedAt}
