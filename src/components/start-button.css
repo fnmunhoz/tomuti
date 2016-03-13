@@ -1,0 +1,17 @@
+.start {
+  width: 48px;
+  height: 48px;
+  border-width: 0;
+  background-color: #e74c3c;
+  -webkit-mask-image: url('./play.svg');
+  mask-image: url('./play.svg');
+}
+
+.stop {
+  width: 48px;
+  height: 48px;
+  border-width: 0;
+  background-color: #e74c3c;
+  -webkit-mask-image: url('./stop.svg');
+  mask-image: url('./stop.svg');
+}
