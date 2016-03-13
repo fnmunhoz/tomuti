@@ -34,6 +34,6 @@ export default React.createClass({
       s = '00'
     }
 
-    return `${m} : ${s}`
+    return `${m}:${s}`
   }
 })
