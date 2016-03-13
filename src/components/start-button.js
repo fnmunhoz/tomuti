@@ -9,8 +9,17 @@ export default React.createClass({
   render: function () {
     return (
       <button onClick={this.props.onClick}>
-        {this.props.status}
+        {this.renderLabel()}
       </button>
     )
+  },
+
+  renderLabel: function () {
+    switch (this.props.status) {
+      case 'running':
+        return 'STOP'
+      case 'stopped':
+        return 'START'
+    }
   }
 })
