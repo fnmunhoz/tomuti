@@ -17,15 +17,6 @@ const tick = () => {
   })
 }
 
-const initialState = {
-  status: 'stopped',
-  tick: 0,
-  startedAt: undefined,
-  quantity: 0,
-  durationMinutes: 0,
-  durationSeconds: 3
-}
-
 const timeElapsed = () => {
   return ((store.getState().durationMinutes * 60) + store.getState().durationSeconds) * 1000 - (Date.now() - store.getState().startedAt)
 }
@@ -47,6 +38,15 @@ const currentTime = () => {
 
 const timeFinished = () => {
   return timeElapsed() < 0
+}
+
+const initialState = {
+  status: 'stopped',
+  tick: 0,
+  startedAt: undefined,
+  quantity: 0,
+  durationMinutes: 0,
+  durationSeconds: 3
 }
 
 const storeManager = (state = initialState, action) => {
