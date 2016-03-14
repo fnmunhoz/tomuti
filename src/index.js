@@ -17,15 +17,20 @@ const tick = () => {
   })
 }
 
-const timeElapsed = () => {
-  return ((store.getState().durationMinutes * 60) + store.getState().durationSeconds) * 1000 - (Date.now() - store.getState().startedAt)
+const timeCountdown = () => {
+  let minutesInSeconds = store.getState().durationMinutes * 60
+  let seconds = store.getState().durationSeconds
+  let durationInMiliSeconds = (minutesInSeconds + seconds) * 1000
+  let timeElapsedInMiliSeconds = Date.now() - store.getState().startedAt
+
+  return durationInMiliSeconds - timeElapsedInMiliSeconds
 }
 
 const currentTime = () => {
   let m, s, time
 
   if (store.getState().status === 'running') {
-    time = new Date(timeElapsed())
+    time = new Date(timeCountdown())
     m = time.getMinutes()
     s = time.getSeconds()
   } else {
@@ -37,7 +42,7 @@ const currentTime = () => {
 }
 
 const timeFinished = () => {
-  return timeElapsed() < 0
+  return timeCountdown() < 0
 }
 
 const initialState = {
