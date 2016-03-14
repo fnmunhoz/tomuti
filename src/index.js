@@ -60,13 +60,15 @@ const startToggleManager = (state) => {
 }
 
 const tickManager = (state) => {
-  let quantity = state.quantity
   let status = state.status
+  let tick = state.tick
+  let quantity = state.quantity
   let startedAt = state.startedAt
 
   if (timeElapsed() < 0) {
-    quantity += 1
     status = 'stopped'
+    tick += 1
+    quantity += 1
     startedAt = undefined
   }
 
@@ -75,11 +77,12 @@ const tickManager = (state) => {
       return {
         ...state,
         status: status,
-        tick: state.tick + 1,
-        startedAt: startedAt,
-        quantity: quantity
+        tick: tick,
+        quantity: quantity,
+        startedAt: startedAt
       }
-    case 'stopped':
+
+    default:
       return state
   }
 }
