@@ -9,7 +9,6 @@ export default React.createClass({
   propTypes: {
     status: React.PropTypes.string,
     startToggle: React.PropTypes.func,
-    startedAt: React.PropTypes.number,
     durationMinutes: React.PropTypes.number,
     durationSeconds: React.PropTypes.number,
     timeElapsed: React.PropTypes.number,
@@ -22,7 +21,6 @@ export default React.createClass({
         <Countdown
           durationMinutes={this.props.durationMinutes}
           durationSeconds={this.props.durationSeconds}
-          startedAt={this.props.startedAt}
           status={this.props.status}
           timeElapsed={this.props.timeElapsed}
         />

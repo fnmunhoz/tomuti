@@ -101,7 +101,6 @@ const render = () => {
         durationSeconds={store.getState().durationSeconds}
         timeElapsed={timeElapsed()}
         status={store.getState().status}
-        startedAt={store.getState().startedAt}
         startToggle={startToggle}
         quantity={store.getState().quantity}
       />
