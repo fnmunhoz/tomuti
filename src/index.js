@@ -56,6 +56,9 @@ const startToggleManager = (state) => {
         status: 'running',
         startedAt: Date.now()
       }
+
+    default:
+      return state
   }
 }
 
