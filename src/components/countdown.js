@@ -4,10 +4,8 @@ var React = require('react')
 
 export default React.createClass({
   propTypes: {
-    durationMinutes: React.PropTypes.number,
-    durationSeconds: React.PropTypes.number,
-    timeElapsed: React.PropTypes.number,
-    status: React.PropTypes.string
+    currentMinutes: React.PropTypes.number,
+    currentSeconds: React.PropTypes.number
   },
 
   render: function () {
@@ -19,26 +17,11 @@ export default React.createClass({
   },
 
   minutes: function () {
-    return this.pad(this.time().minutes.toString())
+    return this.pad(this.props.currentMinutes.toString())
   },
 
   seconds: function () {
-    return this.pad(this.time().seconds.toString())
-  },
-
-  time: function () {
-    let m, s, time
-
-    if (this.props.status === 'running') {
-      time = new Date(this.props.timeElapsed)
-      m = time.getMinutes()
-      s = time.getSeconds()
-    } else {
-      m = this.props.durationMinutes
-      s = this.props.durationSeconds
-    }
-
-    return { minutes: m, seconds: s }
+    return this.pad(this.props.currentSeconds.toString())
   },
 
   pad: function (time, length) {

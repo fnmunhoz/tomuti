@@ -30,6 +30,25 @@ const timeElapsed = () => {
   return ((store.getState().durationMinutes * 60) + store.getState().durationSeconds) * 1000 - (Date.now() - store.getState().startedAt)
 }
 
+const currentTime = () => {
+  let m, s, time
+
+  if (store.getState().status === 'running') {
+    time = new Date(timeElapsed())
+    m = time.getMinutes()
+    s = time.getSeconds()
+  } else {
+    m = store.getState().durationMinutes
+    s = store.getState().durationSeconds
+  }
+
+  return { minutes: m, seconds: s }
+}
+
+const timeFinished = () => {
+  return timeElapsed() < 0
+}
+
 const storeManager = (state = initialState, action) => {
   switch (action.type) {
     case 'START_TOGGLE':
@@ -68,7 +87,7 @@ const tickManager = (state) => {
   let quantity = state.quantity
   let startedAt = state.startedAt
 
-  if (timeElapsed() < 0) {
+  if (timeFinished()) {
     status = 'stopped'
     tick += 1
     quantity += 1
@@ -97,9 +116,8 @@ const render = () => {
     <div>
       <ReactInterval timeout={100} enabled callback={tick} />
       <Timer
-        durationMinutes={store.getState().durationMinutes}
-        durationSeconds={store.getState().durationSeconds}
-        timeElapsed={timeElapsed()}
+        currentMinutes={currentTime().minutes}
+        currentSeconds={currentTime().seconds}
         status={store.getState().status}
         startToggle={startToggle}
         quantity={store.getState().quantity}

@@ -7,11 +7,10 @@ var React = require('react')
 
 export default React.createClass({
   propTypes: {
+    currentMinutes: React.PropTypes.number,
+    currentSeconds: React.PropTypes.number,
     status: React.PropTypes.string,
     startToggle: React.PropTypes.func,
-    durationMinutes: React.PropTypes.number,
-    durationSeconds: React.PropTypes.number,
-    timeElapsed: React.PropTypes.number,
     quantity: React.PropTypes.number
   },
 
@@ -19,10 +18,8 @@ export default React.createClass({
     return (
       <div className={style.component}>
         <Countdown
-          durationMinutes={this.props.durationMinutes}
-          durationSeconds={this.props.durationSeconds}
-          status={this.props.status}
-          timeElapsed={this.props.timeElapsed}
+          currentMinutes={this.props.currentMinutes}
+          currentSeconds={this.props.currentSeconds}
         />
         <StartButton onClick={this.props.startToggle} status={this.props.status} />
         <p>Total: {this.props.quantity}</p>
