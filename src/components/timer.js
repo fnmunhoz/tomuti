@@ -21,7 +21,12 @@ export default React.createClass({
           currentMinutes={this.props.currentMinutes}
           currentSeconds={this.props.currentSeconds}
         />
-        <StartButton onClick={this.props.startToggle} status={this.props.status} />
+
+        <StartButton
+          onClick={this.props.startToggle}
+          status={this.props.status}
+        />
+
         <p>Total: {this.props.quantity}</p>
       </div>
     )
