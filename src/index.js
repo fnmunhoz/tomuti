@@ -112,12 +112,14 @@ const tickManager = (state) => {
 let store = createStore(storeManager)
 
 const render = () => {
+  let { minutes, seconds } = currentTime()
+
   ReactDOM.render(
     <div>
       <ReactInterval timeout={100} enabled callback={tick} />
       <Timer
-        currentMinutes={currentTime().minutes}
-        currentSeconds={currentTime().seconds}
+        currentMinutes={minutes}
+        currentSeconds={seconds}
         status={store.getState().status}
         startToggle={startToggle}
         quantity={store.getState().quantity}
