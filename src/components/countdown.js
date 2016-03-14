@@ -13,30 +13,38 @@ export default React.createClass({
   render: function () {
     return (
       <div className={style.label}>
-        {this.format()}
+        { `${this.minutes()}:${this.seconds()}` }
       </div>
     )
   },
 
-  format: function () {
-    const pad = (time, length) => {
-      while (time.length < length) {
-        time = '0' + time
-      }
-      return time
-    }
+  minutes: function () {
+    return this.pad(this.time().minutes.toString())
+  },
 
-    let m, s
+  seconds: function () {
+    return this.pad(this.time().seconds.toString())
+  },
+
+  time: function () {
+    let m, s, time
 
     if (this.props.status === 'running') {
-      let time = new Date(this.props.timeElapsed)
-      m = pad(time.getMinutes().toString(), 2)
-      s = pad(time.getSeconds().toString(), 2)
+      time = new Date(this.props.timeElapsed)
+      m = time.getMinutes()
+      s = time.getSeconds()
     } else {
-      m = pad(this.props.durationMinutes.toString(), 2)
-      s = pad(this.props.durationSeconds.toString(), 2)
+      m = this.props.durationMinutes
+      s = this.props.durationSeconds
     }
 
-    return `${m}:${s}`
+    return { minutes: m, seconds: s }
+  },
+
+  pad: function (time, length) {
+    while (time.length < 2) {
+      time = '0' + time
+    }
+    return time
   }
 })
