@@ -1,12 +1,12 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+
 import { createStore } from 'redux'
 import ReactInterval from 'react-interval'
 import Timer from './components/timer'
 
 import { startToggleAction } from './actions/index'
 import { tickAction } from './actions/index'
-
-var React = require('react')
-var ReactDOM = require('react-dom')
 
 const startToggle = () => {
   store.dispatch(startToggleAction())
