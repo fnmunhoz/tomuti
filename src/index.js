@@ -56,56 +56,41 @@ const initialState = {
 const storeManager = (state = initialState, action) => {
   switch (action.type) {
     case 'START_TOGGLE':
-      return startToggleManager(state)
+      switch (state.status) {
+          case 'running':
+            return {
+              ...state,
+              status: 'stopped',
+              startedAt: undefined
+            }
+          case 'stopped':
+            return {
+              ...state,
+              status: 'running',
+              startedAt: Date.now()
+            }
+        }
     case 'TICK':
-      return tickManager(state)
+      switch (state.status) {
+        case 'running':
+          let status = state.status
+          let tick = state.tick
+          let quantity = state.quantity
+          let startedAt = state.startedAt
 
-    default:
-      return state
-  }
-}
-
-const startToggleManager = (state) => {
-  switch (state.status) {
-    case 'running':
-      return {
-        ...state,
-        status: 'stopped',
-        startedAt: undefined
-      }
-    case 'stopped':
-      return {
-        ...state,
-        status: 'running',
-        startedAt: Date.now()
-      }
-
-    default:
-      return state
-  }
-}
-
-const tickManager = (state) => {
-  let status = state.status
-  let tick = state.tick
-  let quantity = state.quantity
-  let startedAt = state.startedAt
-
-  if (timeFinished()) {
-    status = 'stopped'
-    tick += 1
-    quantity += 1
-    startedAt = undefined
-  }
-
-  switch (state.status) {
-    case 'running':
-      return {
-        ...state,
-        status: status,
-        tick: tick,
-        quantity: quantity,
-        startedAt: startedAt
+          if (timeFinished()) {
+            status = 'stopped'
+            tick += 1
+            quantity += 1
+            startedAt = undefined
+          }
+          return {
+            ...state,
+            status: status,
+            tick: tick,
+            quantity: quantity,
+            startedAt: startedAt
+          }
       }
 
     default:
