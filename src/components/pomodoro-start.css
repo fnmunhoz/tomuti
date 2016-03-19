@@ -6,8 +6,8 @@
 }
 
 .start {
-  -webkit-mask-image: url('./play.svg');
-  mask-image: url('./play.svg');
+  -webkit-mask-image: url('./start.svg');
+  mask-image: url('./start.svg');
 }
 
 .stop {

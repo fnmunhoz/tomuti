@@ -16,14 +16,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "redux-devtools": "^3.1.1",
     "sagui": "^3.3.0"
   },
   "dependencies": {
+    "babel-polyfill": "^6.7.2",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-interval": "^1.2.1",
-    "react-redux": "^4.4.0",
+    "react-redux": "^4.4.1",
     "redux": "^3.3.1"
   }
 }

@@ -1,11 +1,11 @@
-export const startToggleAction = () => {
+export const setStart = () => {
   return {
-    type: 'START_TOGGLE'
+    type: 'START'
   }
 }
 
-export const tickAction = () => {
+export const updateTime = () => {
   return {
-    type: 'TICK'
+    type: 'UPDATE'
   }
 }
