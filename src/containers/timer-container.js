@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import PomodoroTimer from '../components/pomodoro-timer'
-import { timeLeft } from '../reducers/pomodoro-manager'
+import { timeLeft } from '../reducers/current-pomodoro'
 
 const mapStateToProps = (state, ownProps) => {
   const currentTime = (localState) => {
@@ -19,7 +19,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   return currentTime(
-    state.pomodoroManager
+    state.currentPomodoro
   )
 }
 

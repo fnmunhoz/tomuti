@@ -3,7 +3,7 @@ import PomodoroFooter from '../components/pomodoro-footer'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    count: state.pomodoroManager.count
+    count: state.currentPomodoro.count
   }
 }
 

@@ -4,7 +4,7 @@ import PomodoroStart from '../components/pomodoro-start'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    started: state.pomodoroManager.startedAt !== undefined
+    started: state.currentPomodoro.startedAt !== undefined
   }
 }
 

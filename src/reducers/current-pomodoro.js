@@ -10,7 +10,7 @@ const initialState = {
   startedAt: undefined
 }
 
-const pomodoroManager = (state = initialState, action) => {
+const currentPomodoro = (state = initialState, action) => {
   switch (action.type) {
     case START:
       return {
@@ -39,7 +39,7 @@ const pomodoroManager = (state = initialState, action) => {
   }
 }
 
-export default pomodoroManager
+export default currentPomodoro
 
 export const timeLeft = (localState) => {
   if (localState.startedAt) {
