@@ -6,13 +6,7 @@ import { createStore } from 'redux'
 import tomutiApp from './reducers'
 import App from './components/app'
 
-let store = createStore(tomutiApp, {
-  pomodoroManager: {
-    durationMinutes: 25,
-    durationSeconds: 0,
-    count: 0
-  }
-})
+let store = createStore(tomutiApp)
 
 render(
   <Provider store={store}>

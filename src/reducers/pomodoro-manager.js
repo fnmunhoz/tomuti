@@ -5,7 +5,13 @@ import {
   UPDATE
 } from '../constants/action-types'
 
-const pomodoroManager = (state = {}, action) => {
+const initialState = {
+  durationMinutes: 25,
+  durationSeconds: 0,
+  count: 0
+}
+
+const pomodoroManager = (state = initialState, action) => {
   switch (action.type) {
     case START:
       return {
