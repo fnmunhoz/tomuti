@@ -8,7 +8,8 @@ import {
 const initialState = {
   durationMinutes: 25,
   durationSeconds: 0,
-  count: 0
+  count: 0,
+  startedAt: undefined
 }
 
 const pomodoroManager = (state = initialState, action) => {
