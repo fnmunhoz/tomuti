@@ -18,7 +18,7 @@ const pomodoroManager = (state = initialState, action) => {
         startedAt: state.startedAt ? undefined : Date.now()
       }
     case UPDATE:
-      let timeLeftValue = timeLeft(state.durationMinutes, state.durationSeconds, state.startedAt)
+      let timeLeftValue = timeLeft(state)
 
       if (timeLeftValue && timeLeftValue < 0) {
         return {
@@ -41,12 +41,12 @@ const pomodoroManager = (state = initialState, action) => {
 
 export default pomodoroManager
 
-export const timeLeft = (durationMinutes, durationSeconds, startedAt) => {
-  if (startedAt) {
-    let minutesInSeconds = durationMinutes * 60
-    let seconds = durationSeconds
+export const timeLeft = (localState) => {
+  if (localState.startedAt) {
+    let minutesInSeconds = localState.durationMinutes * 60
+    let seconds = localState.durationSeconds
     let durationInMiliSeconds = (minutesInSeconds + seconds) * 1000
-    let timeElapsedInMiliSeconds = Date.now() - startedAt
+    let timeElapsedInMiliSeconds = Date.now() - localState.startedAt
 
     return durationInMiliSeconds - timeElapsedInMiliSeconds
   }

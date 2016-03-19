@@ -3,25 +3,23 @@ import PomodoroTimer from '../components/pomodoro-timer'
 import { timeLeft } from '../reducers/pomodoro-manager'
 
 const mapStateToProps = (state, ownProps) => {
-  const currentTime = (durationMinutes, durationSeconds, startedAt) => {
+  const currentTime = (localState) => {
     let currentMinutes, currentSeconds
 
-    if (startedAt) {
-      const time = new Date(timeLeft(durationMinutes, durationSeconds, startedAt))
+    if (localState.startedAt) {
+      const time = new Date(timeLeft(localState))
       currentMinutes = time.getMinutes()
       currentSeconds = time.getSeconds()
     } else {
-      currentMinutes = durationMinutes
-      currentSeconds = durationSeconds
+      currentMinutes = localState.durationMinutes
+      currentSeconds = localState.durationSeconds
     }
 
     return { currentMinutes: currentMinutes, currentSeconds: currentSeconds }
   }
 
   return currentTime(
-    state.pomodoroManager.durationMinutes,
-    state.pomodoroManager.durationSeconds,
-    state.pomodoroManager.startedAt
+    state.pomodoroManager
   )
 }
 
