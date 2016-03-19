@@ -1,5 +1,3 @@
-import TimeLeft from '../lib/time-left'
-
 import {
   START,
   UPDATE
@@ -20,9 +18,9 @@ const pomodoroManager = (state = initialState, action) => {
         startedAt: state.startedAt ? undefined : Date.now()
       }
     case UPDATE:
-      let timeLeft = TimeLeft(state.durationMinutes, state.durationSeconds, state.startedAt)
+      let timeLeftValue = timeLeft(state.durationMinutes, state.durationSeconds, state.startedAt)
 
-      if (timeLeft && timeLeft < 0) {
+      if (timeLeftValue && timeLeftValue < 0) {
         return {
           ...state,
           startedAt: undefined,
@@ -42,3 +40,15 @@ const pomodoroManager = (state = initialState, action) => {
 }
 
 export default pomodoroManager
+
+export const timeLeft = (durationMinutes, durationSeconds, startedAt) => {
+  if (startedAt) {
+    let minutesInSeconds = durationMinutes * 60
+    let seconds = durationSeconds
+    let durationInMiliSeconds = (minutesInSeconds + seconds) * 1000
+    let timeElapsedInMiliSeconds = Date.now() - startedAt
+
+    return durationInMiliSeconds - timeElapsedInMiliSeconds
+  }
+}
+

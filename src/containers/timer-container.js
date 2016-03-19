@@ -1,13 +1,13 @@
 import { connect } from 'react-redux'
 import PomodoroTimer from '../components/pomodoro-timer'
-import TimeLeft from '../lib/time-left'
+import { timeLeft } from '../reducers/pomodoro-manager'
 
 const mapStateToProps = (state, ownProps) => {
   const currentTime = (durationMinutes, durationSeconds, startedAt) => {
     let currentMinutes, currentSeconds
 
     if (startedAt) {
-      const time = new Date(TimeLeft(durationMinutes, durationSeconds, startedAt))
+      const time = new Date(timeLeft(durationMinutes, durationSeconds, startedAt))
       currentMinutes = time.getMinutes()
       currentSeconds = time.getSeconds()
     } else {
