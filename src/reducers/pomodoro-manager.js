@@ -1,13 +1,18 @@
 import TimeLeft from '../lib/time-left'
 
+import {
+  START,
+  UPDATE
+} from '../constants/action-types'
+
 const pomodoroManager = (state = {}, action) => {
   switch (action.type) {
-    case 'START':
+    case START:
       return {
         ...state,
         startedAt: state.startedAt ? undefined : Date.now()
       }
-    case 'UPDATE':
+    case UPDATE:
       let timeLeft = TimeLeft(state.durationMinutes, state.durationSeconds, state.startedAt)
 
       if (timeLeft && timeLeft < 0) {

@@ -1,11 +1,13 @@
+import * as types from '../constants/action-types'
+
 export const setStart = () => {
   return {
-    type: 'START'
+    type: types.START
   }
 }
 
 export const updateTime = () => {
   return {
-    type: 'UPDATE'
+    type: types.UPDATE
   }
 }
