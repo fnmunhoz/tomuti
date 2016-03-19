@@ -1,13 +1,17 @@
 import * as types from '../constants/action-types'
 
-export const setStart = () => {
-  return {
-    type: types.START
+export function setStart () {
+  return (dispatch) => {
+    dispatch({
+      type: types.START
+    })
   }
 }
 
-export const updateTime = () => {
-  return {
-    type: types.UPDATE
+export function updateTime () {
+  return (dispatch) => {
+    dispatch({
+      type: types.UPDATE
+    })
   }
 }
