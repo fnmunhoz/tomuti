@@ -16,7 +16,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "sagui": "^3.3.0"
+    "sagui": "^3.3.0",
+    "redux-logger": "^2.6.1",
   },
   "dependencies": {
     "babel-polyfill": "^6.7.2",
