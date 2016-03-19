@@ -2,15 +2,15 @@ import style from './pomodoro.css'
 
 import React from 'react'
 
-import Timer from '../containers/timer'
-import Start from '../containers/start'
-import Footer from '../containers/footer'
+import TimerContainer from '../containers/timer-container'
+import StartContainer from '../containers/start-container'
+import FooterContainer from '../containers/footer-container'
 
 const Pomodoro = () => (
   <div className={style.component}>
-    <Timer />
-    <Start />
-    <Footer />
+    <TimerContainer />
+    <StartContainer />
+    <FooterContainer />
   </div>
 )
 
