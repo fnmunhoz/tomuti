@@ -11,8 +11,8 @@ const PomodoroTimer = ({ currentMinutes, currentSeconds }) => {
     return time
   }
 
-  let minutes = Pad(currentMinutes.toString())
-  let seconds = Pad(currentSeconds.toString())
+  const minutes = Pad(currentMinutes.toString())
+  const seconds = Pad(currentSeconds.toString())
 
   return (
     <div className={style.label}>

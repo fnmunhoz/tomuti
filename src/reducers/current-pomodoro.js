@@ -50,10 +50,10 @@ export default (state = initialState, action) => {
 }
 
 const timeLeft = (localState, currentTime) => {
-  let minutesInSeconds = localState.durationMinutes * 60
-  let seconds = localState.durationSeconds
-  let durationInMiliSeconds = (minutesInSeconds + seconds) * 1000
-  let timeElapsedInMiliSeconds = currentTime - localState.startedAt
+  const minutesInSeconds = localState.durationMinutes * 60
+  const seconds = localState.durationSeconds
+  const durationInMiliSeconds = (minutesInSeconds + seconds) * 1000
+  const timeElapsedInMiliSeconds = currentTime - localState.startedAt
 
   return durationInMiliSeconds - timeElapsedInMiliSeconds
 }
