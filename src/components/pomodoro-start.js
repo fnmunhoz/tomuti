@@ -6,7 +6,7 @@ import ReactInterval from 'react-interval'
 const PomodoroStart = ({ started, onClick, onInterval }) => (
   <div>
     <ReactInterval
-      timeout={100}
+      timeout={200}
       enabled={started}
       callback={onInterval}
     />
