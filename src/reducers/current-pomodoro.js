@@ -15,7 +15,7 @@ const initialState = {
   currentSeconds: durationSeconds
 }
 
-const currentPomodoro = (state = initialState, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case START:
       return {
@@ -48,8 +48,6 @@ const currentPomodoro = (state = initialState, action) => {
       return state
   }
 }
-
-export default currentPomodoro
 
 const timeLeft = (localState, currentTime) => {
   let minutesInSeconds = localState.durationMinutes * 60

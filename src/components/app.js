@@ -1,10 +1,8 @@
 import React from 'react'
 import Pomodoro from './pomodoro'
 
-const App = () => (
+export default () => (
   <div>
     <Pomodoro />
   </div>
 )
-
-export default App

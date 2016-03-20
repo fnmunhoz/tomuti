@@ -7,8 +7,6 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const Footer = connect(
+export default connect(
   mapStateToProps
 )(PomodoroFooter)
-
-export default Footer
