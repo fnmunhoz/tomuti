@@ -7,6 +7,7 @@ const initialState = {
   durationMinutes: 25,
   durationSeconds: 0,
   count: 0,
+  currentTime: undefined,
   startedAt: undefined
 }
 
@@ -15,7 +16,8 @@ const currentPomodoro = (state = initialState, action) => {
     case START:
       return {
         ...state,
-        startedAt: state.startedAt ? undefined : Date.now()
+        startedAt: state.startedAt ? undefined : action.currentTime,
+        currentTime: action.currentTime
       }
     case UPDATE:
       let timeLeftValue = timeLeft(state)
@@ -24,11 +26,13 @@ const currentPomodoro = (state = initialState, action) => {
         return {
           ...state,
           startedAt: undefined,
-          count: state.count + 1
+          count: state.count + 1,
+          currentTime: action.currentTime
         }
       } else {
         return {
-          ...state
+          ...state,
+          currentTime: action.currentTime
         }
       }
 
@@ -46,7 +50,7 @@ export const timeLeft = (localState) => {
     let minutesInSeconds = localState.durationMinutes * 60
     let seconds = localState.durationSeconds
     let durationInMiliSeconds = (minutesInSeconds + seconds) * 1000
-    let timeElapsedInMiliSeconds = Date.now() - localState.startedAt
+    let timeElapsedInMiliSeconds = localState.currentTime - localState.startedAt
 
     return durationInMiliSeconds - timeElapsedInMiliSeconds
   }
