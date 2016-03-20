@@ -2,28 +2,12 @@ import { connect } from 'react-redux'
 import PomodoroTimer from '../components/pomodoro-timer'
 
 const mapStateToProps = (state, ownProps) => {
-  const currentTime = (localState) => {
-    let currentMinutes, currentSeconds
-
-    if (localState.timeLeft) {
-      const timeLeft = new Date(localState.timeLeft)
-      currentMinutes = timeLeft.getMinutes()
-      currentSeconds = timeLeft.getSeconds()
-    } else {
-      currentMinutes = localState.durationMinutes
-      currentSeconds = localState.durationSeconds
-    }
-
-    return { currentMinutes: currentMinutes, currentSeconds: currentSeconds }
+  return {
+    currentMinutes: state.currentPomodoro.currentMinutes,
+    currentSeconds: state.currentPomodoro.currentSeconds
   }
-
-  return currentTime(
-    state.currentPomodoro
-  )
 }
 
-const Timer = connect(
+export default connect(
   mapStateToProps
 )(PomodoroTimer)
-
-export default Timer

@@ -3,12 +3,16 @@ import {
   UPDATE
 } from '../constants/action-types'
 
+const durationMinutes = 25
+const durationSeconds = 0
+
 const initialState = {
-  durationMinutes: 25,
-  durationSeconds: 0,
+  durationMinutes: durationMinutes,
+  durationSeconds: durationSeconds,
   count: 0,
   startedAt: undefined,
-  timeLeft: undefined
+  currentMinutes: durationMinutes,
+  currentSeconds: durationSeconds
 }
 
 const currentPomodoro = (state = initialState, action) => {
@@ -17,22 +21,24 @@ const currentPomodoro = (state = initialState, action) => {
       return {
         ...state,
         startedAt: state.startedAt ? undefined : action.currentTime,
-        timeLeft: undefined
+        currentMinutes: state.durationMinutes,
+        currentSeconds: state.durationSeconds
       }
     case UPDATE:
       const timeLeftValue = timeLeft(state, action.currentTime)
+      const currentDate = new Date(timeLeftValue)
 
-      if (timeLeftValue && timeLeftValue < 0) {
+      if (timeLeftValue < 0) {
         return {
           ...state,
           startedAt: undefined,
-          timeLeft: undefined,
           count: state.count + 1
         }
       } else {
         return {
           ...state,
-          timeLeft: timeLeftValue
+          currentMinutes: currentDate.getMinutes(),
+          currentSeconds: currentDate.getSeconds()
         }
       }
 
@@ -46,13 +52,10 @@ const currentPomodoro = (state = initialState, action) => {
 export default currentPomodoro
 
 const timeLeft = (localState, currentTime) => {
-  if (localState.startedAt) {
-    let minutesInSeconds = localState.durationMinutes * 60
-    let seconds = localState.durationSeconds
-    let durationInMiliSeconds = (minutesInSeconds + seconds) * 1000
-    let timeElapsedInMiliSeconds = currentTime - localState.startedAt
+  let minutesInSeconds = localState.durationMinutes * 60
+  let seconds = localState.durationSeconds
+  let durationInMiliSeconds = (minutesInSeconds + seconds) * 1000
+  let timeElapsedInMiliSeconds = currentTime - localState.startedAt
 
-    return durationInMiliSeconds - timeElapsedInMiliSeconds
-  }
+  return durationInMiliSeconds - timeElapsedInMiliSeconds
 }
-
