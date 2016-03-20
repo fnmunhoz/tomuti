@@ -1,15 +1,24 @@
 import { connect } from 'react-redux'
 import React, { Component, PropTypes } from 'react'
+import ReactInterval from 'react-interval'
 import { setStart, updateTime } from '../actions'
 import PomodoroStart from '../components/pomodoro-start'
 
 class StartContainer extends Component {
   render () {
     return (
-      <PomodoroStart
-        started={this.props.started}
-        onClick={ () => this.props.setStart() }
-        onInterval={ () => this.props.updateTime() } />
+      <div>
+        <ReactInterval
+          timeout={200}
+          enabled={this.props.started}
+          callback={ () => this.props.updateTime() }
+        />
+
+        <PomodoroStart
+          started={this.props.started}
+          onClick={ () => this.props.setStart() }
+        />
+      </div>
     )
   }
 }
