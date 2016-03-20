@@ -7,7 +7,7 @@ const PomodoroStart = ({ started, onClick, onInterval }) => (
   <div>
     <ReactInterval
       timeout={100}
-      enabled
+      enabled={started}
       callback={onInterval}
     />
 

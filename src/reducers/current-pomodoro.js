@@ -16,7 +16,8 @@ const currentPomodoro = (state = initialState, action) => {
     case START:
       return {
         ...state,
-        startedAt: state.startedAt ? undefined : action.currentTime
+        startedAt: state.startedAt ? undefined : action.currentTime,
+        timeLeft: undefined
       }
     case UPDATE:
       const timeLeftValue = timeLeft(state, action.currentTime)
