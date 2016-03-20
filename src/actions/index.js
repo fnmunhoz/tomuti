@@ -2,22 +2,18 @@ import * as types from '../constants/action-types'
 
 export function setStart () {
   return (dispatch) => {
-    const currentTime = Date.now()
-
     dispatch({
       type: types.START,
-      currentTime: currentTime
+      currentTime: Date.now()
     })
   }
 }
 
 export function updateTime () {
   return (dispatch) => {
-    const currentTime = Date.now()
-
     dispatch({
       type: types.UPDATE,
-      currentTime: currentTime
+      currentTime: Date.now()
     })
   }
 }
