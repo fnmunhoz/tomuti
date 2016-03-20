@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux'
 import currentPomodoro from './current-pomodoro'
 
-const tomutiApp = combineReducers({
+export default combineReducers({
   currentPomodoro
 })
-
-export default tomutiApp
