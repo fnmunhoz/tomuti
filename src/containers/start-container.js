@@ -11,12 +11,12 @@ class StartContainer extends Component {
         <ReactInterval
           timeout={200}
           enabled={this.props.started}
-          callback={ () => this.props.updateTime() }
+          callback={() => this.props.updateTime()}
         />
 
         <PomodoroStart
           started={this.props.started}
-          onClick={ () => this.props.setStart() }
+          onClick={() => this.props.setStart()}
         />
       </div>
     )

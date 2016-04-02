@@ -16,7 +16,7 @@ const PomodoroTimer = ({ currentMinutes, currentSeconds }) => {
 
   return (
     <div className={style.label}>
-      { `${minutes}:${seconds}` }
+      {`${minutes}:${seconds}`}
     </div>
   )
 }
