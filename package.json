@@ -4,20 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run sagui:develop",
     "test": "npm run sagui:test",
+    "test-watch": "NODE_ENV=test sagui test --watch",
+    "develop": "sagui develop",
+    "build": "sagui build",
+    "dist": "NODE_ENV=production sagui dist",
     "sagui:test": "sagui test",
     "sagui:test-watch": "sagui test --watch",
     "sagui:develop": "sagui develop",
     "sagui:build": "sagui build",
-    "sagui:dist": "sagui dist",
-    "start": "npm run sagui:develop"
+    "sagui:dist": "sagui dist"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "sagui": "^3.3.0",
-    "redux-logger": "^2.6.1"
+    "redux-logger": "^2.6.1",
+    "sagui": "^4.0.2"
   },
   "dependencies": {
     "babel-polyfill": "^6.7.4",
