@@ -83,3 +83,42 @@ describe('currentPomodoro START', () => {
     })
   })
 })
+
+describe('currentPomodoro UPDATE', () => {
+  it('should update currentTime', () => {
+    const state = {
+      durationMinutes: 1,
+      durationSeconds: 0,
+      startedAt: 45 * 1000
+    }
+
+    expect(currentPomodoro(state, { type: UPDATE, currentTime: 50 * 1000 })).toEqual({
+      durationMinutes: 1,
+      durationSeconds: 0,
+      startedAt: 45 * 1000,
+      currentMinutes: 0,
+      currentSeconds: 55
+    })
+  })
+
+  it('should update currentTime', () => {
+    const durationMinutes = 25
+    const durationSeconds = 0
+    const currentTime = 5 * 60 * 1000
+    const startedAt = 3 * 60 * 1000
+
+    const state = {
+      durationMinutes: durationMinutes,
+      durationSeconds: durationSeconds,
+      startedAt: startedAt
+    }
+
+    expect(currentPomodoro(state, { type: UPDATE, currentTime: currentTime })).toEqual({
+      durationMinutes: durationMinutes,
+      durationSeconds: durationSeconds,
+      startedAt: startedAt,
+      currentMinutes: 23,
+      currentSeconds: 0
+    })
+  })
+})
