@@ -4,17 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run sagui:develop",
-    "test": "npm run sagui:test",
+    "start": "npm run develop",
+    "test": "NODE_ENV=test sagui test",
     "test-watch": "NODE_ENV=test sagui test --watch",
     "develop": "sagui develop",
     "build": "sagui build",
-    "dist": "NODE_ENV=production sagui dist",
-    "sagui:test": "sagui test",
-    "sagui:test-watch": "sagui test --watch",
-    "sagui:develop": "sagui develop",
-    "sagui:build": "sagui build",
-    "sagui:dist": "sagui dist"
+    "dist": "NODE_ENV=production sagui dist"
   },
   "keywords": [],
   "author": "",
