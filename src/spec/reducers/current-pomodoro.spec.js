@@ -9,16 +9,18 @@ import {
 const ONE_SECOND = 1000
 
 describe('currentPomodoro defaults', () => {
-  const durationMinutes = 25
-  const durationSeconds = 0
+  const initMinutes = 25
+  const initSeconds = 0
 
   const state = {
-    durationMinutes: durationMinutes,
-    durationSeconds: durationSeconds,
+    initMinutes: initMinutes,
+    initSeconds: initSeconds,
+    durationMinutes: initMinutes,
+    durationSeconds: initSeconds,
     count: 0,
     startedAt: undefined,
-    currentMinutes: durationMinutes,
-    currentSeconds: durationSeconds
+    currentMinutes: initMinutes,
+    currentSeconds: initSeconds
   }
 
   it('should provide the default state', () => {
@@ -52,17 +54,17 @@ describe('currentPomodoro defaults', () => {
 
 describe('currentPomodoro START', () => {
   it('should update startedAt to currentTime', () => {
-    const durationMinutes = 25
-    const durationSeconds = 0
+    const initMinutes = 25
+    const initSeconds = 0
     const currentTime = 10
 
     const state = {
-      durationMinutes: durationMinutes,
-      durationSeconds: durationSeconds,
+      initMinutes: initMinutes,
+      initSeconds: initSeconds,
       count: 0,
       startedAt: undefined,
-      currentMinutes: durationMinutes,
-      currentSeconds: durationSeconds
+      currentMinutes: initMinutes,
+      currentSeconds: initSeconds
     }
 
     expect(currentPomodoro(state, { type: START, currentTime: currentTime })).toEqual({
@@ -72,16 +74,16 @@ describe('currentPomodoro START', () => {
   })
 
   it('should update startedAt to undefined', () => {
-    const durationMinutes = 25
-    const durationSeconds = 0
+    const initMinutes = 25
+    const initSeconds = 0
 
     const state = {
-      durationMinutes: durationMinutes,
-      durationSeconds: durationSeconds,
+      initMinutes: initMinutes,
+      initSeconds: initSeconds,
       count: 0,
       startedAt: 300,
-      currentMinutes: durationMinutes,
-      currentSeconds: durationSeconds
+      currentMinutes: initMinutes,
+      currentSeconds: initSeconds
     }
 
     expect(currentPomodoro(state, { type: START, currentTime: 10 })).toEqual({

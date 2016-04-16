@@ -4,16 +4,18 @@ import {
   PAUSE
 } from '../constants/action-types'
 
-const durationMinutes = 25
-const durationSeconds = 0
+const initMinutes = 25
+const initSeconds = 0
 
 const initialState = {
-  durationMinutes: durationMinutes,
-  durationSeconds: durationSeconds,
+  initMinutes: initMinutes,
+  initSeconds: initSeconds,
+  durationMinutes: initMinutes,
+  durationSeconds: initSeconds,
   count: 0,
   startedAt: undefined,
-  currentMinutes: durationMinutes,
-  currentSeconds: durationSeconds
+  currentMinutes: initMinutes,
+  currentSeconds: initSeconds
 }
 
 export default (state = initialState, action) => {
@@ -25,8 +27,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         startedAt: state.startedAt ? undefined : action.currentTime,
-        currentMinutes: state.durationMinutes,
-        currentSeconds: state.durationSeconds
+        currentMinutes: state.initMinutes,
+        currentSeconds: state.initSeconds
       }
     case UPDATE:
       if (timeLeftValue < 0) {
