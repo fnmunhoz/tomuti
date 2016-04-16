@@ -46,58 +46,69 @@ describe('currentPomodoro defaults', () => {
 
 describe('currentPomodoro START', () => {
   it('should update startedAt to currentTime', () => {
+    const durationMinutes = 25
+    const durationSeconds = 0
+    const currentTime = 10
+
     const notStartedState = {
-      durationMinutes: 25,
-      durationSeconds: 0,
+      durationMinutes: durationMinutes,
+      durationSeconds: durationSeconds,
       count: 0,
       startedAt: undefined,
-      currentMinutes: 25,
-      currentSeconds: 0
+      currentMinutes: durationMinutes,
+      currentSeconds: durationSeconds
     }
 
-    expect(currentPomodoro(notStartedState, { type: START, currentTime: 10 })).toEqual({
-      durationMinutes: 25,
-      durationSeconds: 0,
+    expect(currentPomodoro(notStartedState, { type: START, currentTime: currentTime })).toEqual({
+      durationMinutes: durationMinutes,
+      durationSeconds: durationSeconds,
       count: 0,
-      startedAt: 10,
-      currentMinutes: 25,
-      currentSeconds: 0
+      startedAt: currentTime,
+      currentMinutes: durationMinutes,
+      currentSeconds: durationSeconds
     })
   })
 
   it('should update startedAt to undefined', () => {
+    const durationMinutes = 25
+    const durationSeconds = 0
+
     const startedState = {
-      durationMinutes: 25,
-      durationSeconds: 0,
+      durationMinutes: durationMinutes,
+      durationSeconds: durationSeconds,
       count: 0,
       startedAt: 300,
-      currentMinutes: 25,
-      currentSeconds: 0
+      currentMinutes: durationMinutes,
+      currentSeconds: durationSeconds
     }
 
     expect(currentPomodoro(startedState, { type: START, currentTime: 10 })).toEqual({
-      durationMinutes: 25,
-      durationSeconds: 0,
+      durationMinutes: durationMinutes,
+      durationSeconds: durationSeconds,
       count: 0,
       startedAt: undefined,
-      currentMinutes: 25,
-      currentSeconds: 0
+      currentMinutes: durationMinutes,
+      currentSeconds: durationSeconds
     })
   })
 })
 
 describe('currentPomodoro UPDATE', () => {
   it('should update currentTime', () => {
+    const durationMinutes = 1
+    const durationSeconds = 0
+    const startedAt = 45 * ONE_SECOND
+
     const state = {
-      durationMinutes: 1,
-      durationSeconds: 0,
-      startedAt: 45 * ONE_SECOND
+      durationMinutes: durationMinutes,
+      durationSeconds: durationSeconds,
+      startedAt: startedAt
     }
 
     expect(currentPomodoro(state, { type: UPDATE, currentTime: 50 * ONE_SECOND })).toEqual({
-      durationMinutes: 1,
-      durationSeconds: 0,
-      startedAt: 45 * ONE_SECOND,
+      durationMinutes: durationMinutes,
+      durationSeconds: durationSeconds,
+      startedAt: startedAt,
       currentMinutes: 0,
       currentSeconds: 55
     })
@@ -106,7 +117,6 @@ describe('currentPomodoro UPDATE', () => {
   it('should update currentTime', () => {
     const durationMinutes = 25
     const durationSeconds = 0
-    const currentTime = 5 * 60 * ONE_SECOND
     const startedAt = 3 * 60 * ONE_SECOND
 
     const state = {
@@ -115,7 +125,7 @@ describe('currentPomodoro UPDATE', () => {
       startedAt: startedAt
     }
 
-    expect(currentPomodoro(state, { type: UPDATE, currentTime: currentTime })).toEqual({
+    expect(currentPomodoro(state, { type: UPDATE, currentTime: 5 * 60 * ONE_SECOND })).toEqual({
       durationMinutes: durationMinutes,
       durationSeconds: durationSeconds,
       startedAt: startedAt,
