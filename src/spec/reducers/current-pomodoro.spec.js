@@ -34,10 +34,7 @@ describe('currentPomodoro defaults', () => {
 
   it('should return NaN for UPDATE action', () => {
     expect(currentPomodoro(initialState, { type: UPDATE })).toEqual({
-      durationMinutes: 25,
-      durationSeconds: 0,
-      count: 0,
-      startedAt: undefined,
+      ...initialState,
       currentMinutes: NaN,
       currentSeconds: NaN
     })
@@ -60,12 +57,8 @@ describe('currentPomodoro START', () => {
     }
 
     expect(currentPomodoro(notStartedState, { type: START, currentTime: currentTime })).toEqual({
-      durationMinutes: durationMinutes,
-      durationSeconds: durationSeconds,
-      count: 0,
-      startedAt: currentTime,
-      currentMinutes: durationMinutes,
-      currentSeconds: durationSeconds
+      ...notStartedState,
+      startedAt: currentTime
     })
   })
 
@@ -83,12 +76,8 @@ describe('currentPomodoro START', () => {
     }
 
     expect(currentPomodoro(startedState, { type: START, currentTime: 10 })).toEqual({
-      durationMinutes: durationMinutes,
-      durationSeconds: durationSeconds,
-      count: 0,
-      startedAt: undefined,
-      currentMinutes: durationMinutes,
-      currentSeconds: durationSeconds
+      ...startedState,
+      startedAt: undefined
     })
   })
 })
@@ -106,9 +95,7 @@ describe('currentPomodoro UPDATE', () => {
     }
 
     expect(currentPomodoro(state, { type: UPDATE, currentTime: 50 * ONE_SECOND })).toEqual({
-      durationMinutes: durationMinutes,
-      durationSeconds: durationSeconds,
-      startedAt: startedAt,
+      ...state,
       currentMinutes: 0,
       currentSeconds: 55
     })
@@ -126,9 +113,7 @@ describe('currentPomodoro UPDATE', () => {
     }
 
     expect(currentPomodoro(state, { type: UPDATE, currentTime: 5 * 60 * ONE_SECOND })).toEqual({
-      durationMinutes: durationMinutes,
-      durationSeconds: durationSeconds,
-      startedAt: startedAt,
+      ...state,
       currentMinutes: 23,
       currentSeconds: 0
     })
