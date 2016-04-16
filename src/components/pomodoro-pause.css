@@ -1,0 +1,8 @@
+.pause {
+  -webkit-mask-image: url('./pause.svg');
+  mask-image: url('./pause.svg');
+}
+
+.hide {
+  display: none;
+}

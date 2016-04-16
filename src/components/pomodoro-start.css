@@ -1,10 +1,3 @@
-.button {
-  width: 48px;
-  height: 48px;
-  border-width: 0;
-  background-color: #e74c3c;
-}
-
 .start {
   -webkit-mask-image: url('./start.svg');
   mask-image: url('./start.svg');

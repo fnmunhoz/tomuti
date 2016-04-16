@@ -7,6 +7,13 @@ export const setStart = () => (dispatch) => {
   })
 }
 
+export const setPause = () => (dispatch) => {
+  dispatch({
+    type: types.PAUSE,
+    currentTime: Date.now()
+  })
+}
+
 export const updateTime = () => (dispatch) => {
   dispatch({
     type: types.UPDATE,

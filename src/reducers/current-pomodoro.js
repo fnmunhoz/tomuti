@@ -1,6 +1,7 @@
 import {
   START,
-  UPDATE
+  UPDATE,
+  PAUSE
 } from '../constants/action-types'
 
 const durationMinutes = 25
@@ -16,6 +17,9 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
+  const timeLeftValue = timeLeft(state, action.currentTime)
+  const currentDate = new Date(timeLeftValue)
+
   switch (action.type) {
     case START:
       return {
@@ -25,9 +29,6 @@ export default (state = initialState, action) => {
         currentSeconds: state.durationSeconds
       }
     case UPDATE:
-      const timeLeftValue = timeLeft(state, action.currentTime)
-      const currentDate = new Date(timeLeftValue)
-
       if (timeLeftValue < 0) {
         return {
           ...state,
@@ -40,6 +41,13 @@ export default (state = initialState, action) => {
           currentMinutes: currentDate.getMinutes(),
           currentSeconds: currentDate.getSeconds()
         }
+      }
+    case PAUSE:
+      return {
+        ...state,
+        startedAt: undefined,
+        durationMinutes: currentDate.getMinutes(),
+        durationSeconds: currentDate.getSeconds()
       }
 
     default:

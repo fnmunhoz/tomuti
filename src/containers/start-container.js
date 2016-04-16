@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
 import React, { Component, PropTypes } from 'react'
 import ReactInterval from 'react-interval'
-import { setStart, updateTime } from '../actions'
+import { setStart, setPause, updateTime } from '../actions'
 import PomodoroStart from '../components/pomodoro-start'
+import PomodoroPause from '../components/pomodoro-pause'
 
 class StartContainer extends Component {
   render () {
@@ -18,6 +19,11 @@ class StartContainer extends Component {
           started={this.props.started}
           onClick={() => this.props.setStart()}
         />
+
+        <PomodoroPause
+          started={this.props.started}
+          onClick={() => this.props.setPause()}
+        />
       </div>
     )
   }
@@ -32,10 +38,11 @@ const mapStateToProps = (state, ownProps) => {
 StartContainer.propTypes = {
   started: PropTypes.bool.isRequired,
   setStart: PropTypes.func.isRequired,
+  setPause: PropTypes.func.isRequired,
   updateTime: PropTypes.func.isRequired
 }
 
 export default connect(
   mapStateToProps,
-  { setStart, updateTime }
+  { setStart, setPause, updateTime }
 )(StartContainer)
