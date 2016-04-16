@@ -5,6 +5,8 @@ import {
   UPDATE
 } from '../../constants/action-types'
 
+const ONE_SECOND = 1000
+
 describe('currentPomodoro defaults', () => {
   const durationMinutes = 25
   const durationSeconds = 0
@@ -89,13 +91,13 @@ describe('currentPomodoro UPDATE', () => {
     const state = {
       durationMinutes: 1,
       durationSeconds: 0,
-      startedAt: 45 * 1000
+      startedAt: 45 * ONE_SECOND
     }
 
-    expect(currentPomodoro(state, { type: UPDATE, currentTime: 50 * 1000 })).toEqual({
+    expect(currentPomodoro(state, { type: UPDATE, currentTime: 50 * ONE_SECOND })).toEqual({
       durationMinutes: 1,
       durationSeconds: 0,
-      startedAt: 45 * 1000,
+      startedAt: 45 * ONE_SECOND,
       currentMinutes: 0,
       currentSeconds: 55
     })
@@ -104,8 +106,8 @@ describe('currentPomodoro UPDATE', () => {
   it('should update currentTime', () => {
     const durationMinutes = 25
     const durationSeconds = 0
-    const currentTime = 5 * 60 * 1000
-    const startedAt = 3 * 60 * 1000
+    const currentTime = 5 * 60 * ONE_SECOND
+    const startedAt = 3 * 60 * ONE_SECOND
 
     const state = {
       durationMinutes: durationMinutes,
