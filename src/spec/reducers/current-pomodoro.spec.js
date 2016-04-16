@@ -11,7 +11,7 @@ describe('currentPomodoro defaults', () => {
   const durationMinutes = 25
   const durationSeconds = 0
 
-  const initialState = {
+  const state = {
     durationMinutes: durationMinutes,
     durationSeconds: durationSeconds,
     count: 0,
@@ -21,7 +21,7 @@ describe('currentPomodoro defaults', () => {
   }
 
   it('should provide the default state', () => {
-    expect(currentPomodoro(undefined, {})).toEqual(initialState)
+    expect(currentPomodoro(undefined, {})).toEqual(state)
   })
 
   it('should provide the passed state', () => {
@@ -29,12 +29,12 @@ describe('currentPomodoro defaults', () => {
   })
 
   it('should provide the passed state for START action', () => {
-    expect(currentPomodoro(initialState, { type: START })).toEqual(initialState)
+    expect(currentPomodoro(state, { type: START })).toEqual(state)
   })
 
   it('should return NaN for UPDATE action', () => {
-    expect(currentPomodoro(initialState, { type: UPDATE })).toEqual({
-      ...initialState,
+    expect(currentPomodoro(state, { type: UPDATE })).toEqual({
+      ...state,
       currentMinutes: NaN,
       currentSeconds: NaN
     })
@@ -47,7 +47,7 @@ describe('currentPomodoro START', () => {
     const durationSeconds = 0
     const currentTime = 10
 
-    const notStartedState = {
+    const state = {
       durationMinutes: durationMinutes,
       durationSeconds: durationSeconds,
       count: 0,
@@ -56,8 +56,8 @@ describe('currentPomodoro START', () => {
       currentSeconds: durationSeconds
     }
 
-    expect(currentPomodoro(notStartedState, { type: START, currentTime: currentTime })).toEqual({
-      ...notStartedState,
+    expect(currentPomodoro(state, { type: START, currentTime: currentTime })).toEqual({
+      ...state,
       startedAt: currentTime
     })
   })
@@ -66,7 +66,7 @@ describe('currentPomodoro START', () => {
     const durationMinutes = 25
     const durationSeconds = 0
 
-    const startedState = {
+    const state = {
       durationMinutes: durationMinutes,
       durationSeconds: durationSeconds,
       count: 0,
@@ -75,8 +75,8 @@ describe('currentPomodoro START', () => {
       currentSeconds: durationSeconds
     }
 
-    expect(currentPomodoro(startedState, { type: START, currentTime: 10 })).toEqual({
-      ...startedState,
+    expect(currentPomodoro(state, { type: START, currentTime: 10 })).toEqual({
+      ...state,
       startedAt: undefined
     })
   })
