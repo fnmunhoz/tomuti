@@ -7,3 +7,11 @@
   -webkit-mask-image: url('./stop.svg');
   mask-image: url('./stop.svg');
 }
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: inline;
+}

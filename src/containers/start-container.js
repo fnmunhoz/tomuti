@@ -17,11 +17,13 @@ class StartContainer extends Component {
 
         <PomodoroStart
           started={this.props.started}
+          paused={this.props.paused}
           onClick={() => this.props.setStart()}
         />
 
         <PomodoroPause
           started={this.props.started}
+          paused={this.props.paused}
           onClick={() => this.props.setPause()}
         />
       </div>
@@ -31,7 +33,8 @@ class StartContainer extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    started: state.currentPomodoro.startedAt !== undefined
+    started: state.currentPomodoro.startedAt !== undefined,
+    paused: state.currentPomodoro.paused
   }
 }
 

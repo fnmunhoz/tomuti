@@ -20,7 +20,8 @@ describe('currentPomodoro defaults', () => {
     count: 0,
     startedAt: undefined,
     currentMinutes: initMinutes,
-    currentSeconds: initSeconds
+    currentSeconds: initSeconds,
+    paused: false
   }
 
   it('should provide the default state', () => {
@@ -47,7 +48,8 @@ describe('currentPomodoro defaults', () => {
     expect(currentPomodoro(state, { type: PAUSE })).toEqual({
       ...state,
       durationMinutes: NaN,
-      durationSeconds: NaN
+      durationSeconds: NaN,
+      paused: true
     })
   })
 })
@@ -128,29 +130,39 @@ describe('currentPomodoro PAUSE', () => {
     const state = {
       durationMinutes: 1,
       durationSeconds: 0,
-      startedAt: 45 * ONE_SECOND
+      startedAt: 45 * ONE_SECOND,
+      currentMinutes: 1,
+      currentSeconds: 0,
+      paused: false
     }
 
     expect(currentPomodoro(state, { type: PAUSE, currentTime: 50 * ONE_SECOND })).toEqual({
       ...state,
       durationMinutes: 0,
       durationSeconds: 55,
-      startedAt: undefined
+      startedAt: undefined,
+      paused: true
     })
   })
 
   it('should update duration', () => {
-    const state = {
-      durationMinutes: 25,
-      durationSeconds: 0,
-      startedAt: 3 * 60 * ONE_SECOND
-    }
+    const currentTime = 5 * 60 * ONE_SECOND
 
-    expect(currentPomodoro(state, { type: PAUSE, currentTime: 5 * 60 * ONE_SECOND })).toEqual({
-      ...state,
+    const state = {
       durationMinutes: 23,
       durationSeconds: 0,
-      startedAt: undefined
+      startedAt: undefined,
+      currentMinutes: 20,
+      currentSeconds: 0,
+      paused: true
+    }
+
+    expect(currentPomodoro(state, { type: PAUSE, currentTime: currentTime })).toEqual({
+      ...state,
+      startedAt: currentTime,
+      currentMinutes: 23,
+      currentSeconds: 0,
+      paused: false
     })
   })
 })

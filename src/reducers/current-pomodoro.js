@@ -15,7 +15,8 @@ const initialState = {
   count: 0,
   startedAt: undefined,
   currentMinutes: initMinutes,
-  currentSeconds: initSeconds
+  currentSeconds: initSeconds,
+  paused: false
 }
 
 export default (state = initialState, action) => {
@@ -45,12 +46,26 @@ export default (state = initialState, action) => {
         }
       }
     case PAUSE:
-      return {
-        ...state,
-        startedAt: undefined,
-        durationMinutes: currentDate.getMinutes(),
-        durationSeconds: currentDate.getSeconds()
+      var pauseState
+      if (state.paused) {
+        pauseState = {
+          ...state,
+          startedAt: action.currentTime,
+          currentMinutes: state.durationMinutes,
+          currentSeconds: state.durationSeconds,
+          paused: false
+        }
+      } else {
+        pauseState = {
+          ...state,
+          startedAt: undefined,
+          durationMinutes: currentDate.getMinutes(),
+          durationSeconds: currentDate.getSeconds(),
+          paused: true
+        }
       }
+
+      return pauseState
 
     default:
       return state

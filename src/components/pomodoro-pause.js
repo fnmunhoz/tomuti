@@ -3,15 +3,16 @@ import style from './pomodoro-pause.css'
 
 import React, { PropTypes } from 'react'
 
-const PomodoroPause = ({ started, onClick }) => (
+const PomodoroPause = ({ started, paused, onClick }) => (
   <button
-    className={`${button.default} ${started ? style.pause : style.hide}`}
+    className={`${button.default} ${started || paused ? style.pause : style.hide}`}
     onClick={onClick}
   />
 )
 
 PomodoroPause.propTypes = {
   started: PropTypes.bool.isRequired,
+  paused: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired
 }
 
