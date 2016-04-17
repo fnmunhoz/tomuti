@@ -5,10 +5,10 @@ import React, { PropTypes } from 'react'
 
 const PomodoroStart = ({ started, paused, onClick }) => {
   var buttonType
-  if (started && !paused) {
-    buttonType = style.stop
-  } else if (paused) {
+  if (paused) {
     buttonType = style.restart
+  } else if (started) {
+    buttonType = style.stop
   } else {
     buttonType = style.start
   }
