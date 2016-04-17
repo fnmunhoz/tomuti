@@ -40,15 +40,17 @@ export default (state = initialState, action) => {
           ...state,
           startedAt: undefined,
           count: state.count + 1,
-          durationMinutes: state.initMinutes,
-          durationSeconds: state.initSeconds
+          currentMinutes: state.initMinutes,
+          currentSeconds: state.initSeconds
         }
-      } else {
+      } else if (state.startedAt) {
         return {
           ...state,
           currentMinutes: currentDate.getMinutes(),
           currentSeconds: currentDate.getSeconds()
         }
+      } else {
+        return state
       }
     case PAUSE:
       var pauseState

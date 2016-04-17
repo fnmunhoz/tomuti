@@ -37,11 +37,7 @@ describe('currentPomodoro defaults', () => {
   })
 
   it('should return NaN for UPDATE action', () => {
-    expect(currentPomodoro(state, { type: UPDATE })).toEqual({
-      ...state,
-      currentMinutes: NaN,
-      currentSeconds: NaN
-    })
+    expect(currentPomodoro(state, { type: UPDATE })).toEqual(state)
   })
 
   it('should provide the passed state for PAUSE action', () => {
@@ -165,8 +161,8 @@ describe('currentPomodoro UPDATE', () => {
 
     expect(currentPomodoro(state, { type: UPDATE, currentTime: 5 * 60 * ONE_SECOND })).toEqual({
       ...state,
-      durationMinutes: 25,
-      durationSeconds: 0,
+      currentMinutes: 25,
+      currentSeconds: 0,
       count: 1,
       startedAt: undefined
     })
