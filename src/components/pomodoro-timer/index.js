@@ -1,4 +1,4 @@
-import style from './pomodoro-timer.css'
+import style from './style.css'
 
 import React, { PropTypes } from 'react'
 
