@@ -1,5 +1,5 @@
-import button from './button.css'
-import style from './pomodoro-start.css'
+import button from './../button.css'
+import style from './style.css'
 
 import React, { PropTypes } from 'react'
 
