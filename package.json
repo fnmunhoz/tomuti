@@ -17,7 +17,8 @@
   "devDependencies": {
     "react-addons-test-utils": "^15.0.1",
     "redux-logger": "^2.6.1",
-    "sagui": "^4.0.3"
+    "sagui": "^4.0.3",
+    "skin-deep": "^0.16.0"
   },
   "dependencies": {
     "babel-polyfill": "^6.7.4",
