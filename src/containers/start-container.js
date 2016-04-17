@@ -40,6 +40,7 @@ const mapStateToProps = (state, ownProps) => {
 
 StartContainer.propTypes = {
   started: PropTypes.bool.isRequired,
+  paused: PropTypes.bool.isRequired,
   setStart: PropTypes.func.isRequired,
   setPause: PropTypes.func.isRequired,
   updateTime: PropTypes.func.isRequired
