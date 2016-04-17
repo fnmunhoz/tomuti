@@ -39,7 +39,9 @@ export default (state = initialState, action) => {
         return {
           ...state,
           startedAt: undefined,
-          count: state.count + 1
+          count: state.count + 1,
+          durationMinutes: state.initMinutes,
+          durationSeconds: state.initSeconds
         }
       } else {
         return {

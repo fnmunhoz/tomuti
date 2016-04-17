@@ -152,6 +152,25 @@ describe('currentPomodoro UPDATE', () => {
       currentSeconds: 0
     })
   })
+
+  it('should come back to init and increment count', () => {
+    const state = {
+      durationMinutes: 1,
+      durationSeconds: 0,
+      startedAt: 3 * 60 * ONE_SECOND,
+      count: 0,
+      initMinutes: 25,
+      initSeconds: 0
+    }
+
+    expect(currentPomodoro(state, { type: UPDATE, currentTime: 5 * 60 * ONE_SECOND })).toEqual({
+      ...state,
+      durationMinutes: 25,
+      durationSeconds: 0,
+      count: 1,
+      startedAt: undefined
+    })
+  })
 })
 
 describe('currentPomodoro PAUSE', () => {
