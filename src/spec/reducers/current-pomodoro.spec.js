@@ -71,7 +71,10 @@ describe('currentPomodoro START', () => {
 
     expect(currentPomodoro(state, { type: START, currentTime: currentTime })).toEqual({
       ...state,
-      startedAt: currentTime
+      startedAt: currentTime,
+      durationMinutes: initMinutes,
+      durationSeconds: initSeconds,
+      paused: false
     })
   })
 
@@ -85,12 +88,38 @@ describe('currentPomodoro START', () => {
       count: 0,
       startedAt: 300,
       currentMinutes: initMinutes,
-      currentSeconds: initSeconds
+      currentSeconds: initSeconds,
+      paused: false
     }
 
     expect(currentPomodoro(state, { type: START, currentTime: 10 })).toEqual({
       ...state,
-      startedAt: undefined
+      startedAt: undefined,
+      durationMinutes: initMinutes,
+      durationSeconds: initSeconds
+    })
+  })
+
+  it('should restart when paused', () => {
+    const initMinutes = 25
+    const initSeconds = 0
+
+    const state = {
+      initMinutes: initMinutes,
+      initSeconds: initSeconds,
+      count: 0,
+      startedAt: undefined,
+      currentMinutes: initMinutes,
+      currentSeconds: initSeconds,
+      paused: true
+    }
+
+    expect(currentPomodoro(state, { type: START, currentTime: 10 })).toEqual({
+      ...state,
+      startedAt: undefined,
+      durationMinutes: initMinutes,
+      durationSeconds: initSeconds,
+      paused: false
     })
   })
 })

@@ -8,6 +8,11 @@
   mask-image: url('./stop.svg');
 }
 
+.restart {
+  -webkit-mask-image: url('./restart.svg');
+  mask-image: url('./restart.svg');
+}
+
 .hide {
   display: none;
 }

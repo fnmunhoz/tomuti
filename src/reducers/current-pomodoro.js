@@ -27,9 +27,12 @@ export default (state = initialState, action) => {
     case START:
       return {
         ...state,
-        startedAt: state.startedAt ? undefined : action.currentTime,
+        startedAt: state.startedAt || state.paused ? undefined : action.currentTime,
         currentMinutes: state.initMinutes,
-        currentSeconds: state.initSeconds
+        currentSeconds: state.initSeconds,
+        durationMinutes: state.initMinutes,
+        durationSeconds: state.initSeconds,
+        paused: false
       }
     case UPDATE:
       if (timeLeftValue < 0) {
