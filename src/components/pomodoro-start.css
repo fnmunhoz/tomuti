@@ -12,11 +12,3 @@
   -webkit-mask-image: url('./restart.svg');
   mask-image: url('./restart.svg');
 }
-
-.hide {
-  display: none;
-}
-
-.show {
-  display: inline;
-}
