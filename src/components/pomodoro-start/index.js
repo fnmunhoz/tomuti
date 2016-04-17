@@ -1,4 +1,4 @@
-import button from './../button.css'
+import button from './../shared/button.css'
 import style from './style.css'
 
 import React, { PropTypes } from 'react'
