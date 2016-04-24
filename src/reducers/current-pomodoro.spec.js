@@ -1,10 +1,10 @@
-import currentPomodoro from '../../reducers/current-pomodoro'
+import currentPomodoro from './current-pomodoro'
 
 import {
   START,
   UPDATE,
   PAUSE
-} from '../../constants/action-types'
+} from '../constants/action-types'
 
 const ONE_SECOND = 1000
 

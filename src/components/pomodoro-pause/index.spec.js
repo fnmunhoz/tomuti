@@ -1,9 +1,9 @@
 import { createElement } from 'react'
 import sd from 'skin-deep'
 
-import PomodoroPause from '../../components/pomodoro-pause'
-import styleButton from './../../components/shared/button.css'
-import style from './../../components/pomodoro-pause/style.css'
+import PomodoroPause from '.'
+import styleButton from './../shared/button.css'
+import style from './style.css'
 
 describe('PomodoroPause started and not paused', () => {
   let component

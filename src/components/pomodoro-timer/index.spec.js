@@ -1,8 +1,8 @@
 import { createElement } from 'react'
 import sd from 'skin-deep'
 
-import PomodoroTimer from '../../components/pomodoro-timer'
-import style from './../../components/pomodoro-timer/style.css'
+import PomodoroTimer from '.'
+import style from './style.css'
 
 describe('PomodoroTimer', () => {
   let component

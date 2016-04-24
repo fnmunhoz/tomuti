@@ -1,8 +1,8 @@
 import { createElement } from 'react'
 import sd from 'skin-deep'
 
-import Pomodoro from '../../components/pomodoro'
-import style from './../../components/pomodoro/style.css'
+import Pomodoro from '.'
+import style from './style.css'
 
 describe('Pomodoro', () => {
   let component

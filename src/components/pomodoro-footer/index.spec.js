@@ -1,7 +1,7 @@
 import { createElement } from 'react'
 import sd from 'skin-deep'
 
-import PomodoroFooter from '../../components/pomodoro-footer'
+import PomodoroFooter from '.'
 
 describe('PomodoroFooter', () => {
   let component
