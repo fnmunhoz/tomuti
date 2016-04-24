@@ -26,6 +26,11 @@ module.exports = {
       loaders: [
         { test: /\.(svg)$/, loader: 'url-loader?limit=100000' }
       ]
+    },
+    externals: {
+      'cheerio': 'window',
+      'react/lib/ExecutionEnvironment': true,
+      'react/lib/ReactContext': true
     }
   },
 

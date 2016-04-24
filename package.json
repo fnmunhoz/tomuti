@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "enzyme": "^2.2.0",
     "react-addons-test-utils": "^15.0.1",
     "redux-logger": "^2.6.1",
     "sagui": "^4.0.3",
