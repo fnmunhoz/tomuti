@@ -1,78 +1,72 @@
-import { createElement } from 'react'
-import sd from 'skin-deep'
+import React from 'react'
+import { shallow } from 'enzyme'
 
 import PomodoroPause from '.'
 import styleButton from './../shared/button.css'
 import style from './style.css'
 
 describe('PomodoroPause started and not paused', () => {
-  let component
-
-  const onClickHandler = () => {}
-
-  beforeEach(() => {
-    component = sd.shallowRender(createElement(
-      PomodoroPause, { started: true, paused: false, onClick: onClickHandler }
-    ))
-  })
-
   it('should render the pause button', () => {
-    expect(component.type).toEqual('button')
-    expect(component.props.onClick).toEqual(onClickHandler)
-    expect(component.props.className).toEqual(`${styleButton.default} ${style.pause}`)
+    const onClickHandler = sinon.spy()
+
+    const wrapper = shallow(<PomodoroPause started paused={false} onClick={onClickHandler} />)
+
+    expect(wrapper.type()).toEqual('button')
+    expect(wrapper.hasClass(styleButton.default)).toEqual(true)
+    expect(wrapper.hasClass(style.pause)).toEqual(true)
+    expect(wrapper.hasClass(style.hide)).toEqual(false)
+
+    wrapper.simulate('click')
+    expect(onClickHandler.calledOnce).toEqual(true)
   })
 })
 
 describe('PomodoroPause started and paused', () => {
-  let component
-
-  const onClickHandler = () => {}
-
-  beforeEach(() => {
-    component = sd.shallowRender(createElement(
-      PomodoroPause, { started: true, paused: true, onClick: onClickHandler }
-    ))
-  })
-
   it('should render the pause button', () => {
-    expect(component.type).toEqual('button')
-    expect(component.props.onClick).toEqual(onClickHandler)
-    expect(component.props.className).toEqual(`${styleButton.default} ${style.pause}`)
+    const onClickHandler = sinon.spy()
+
+    const wrapper = shallow(<PomodoroPause started paused onClick={onClickHandler} />)
+
+    expect(wrapper.type()).toEqual('button')
+    expect(wrapper.hasClass(styleButton.default)).toEqual(true)
+    expect(wrapper.hasClass(style.pause)).toEqual(true)
+    expect(wrapper.hasClass(style.hide)).toEqual(false)
+
+    wrapper.simulate('click')
+    expect(onClickHandler.calledOnce).toEqual(true)
   })
 })
 
 describe('PomodoroPause not started and paused', () => {
-  let component
-
-  const onClickHandler = () => {}
-
-  beforeEach(() => {
-    component = sd.shallowRender(createElement(
-      PomodoroPause, { started: false, paused: true, onClick: onClickHandler }
-    ))
-  })
-
   it('should render the pause button', () => {
-    expect(component.type).toEqual('button')
-    expect(component.props.onClick).toEqual(onClickHandler)
-    expect(component.props.className).toEqual(`${styleButton.default} ${style.pause}`)
+    const onClickHandler = sinon.spy()
+
+    const wrapper = shallow(<PomodoroPause started={false} paused onClick={onClickHandler} />)
+
+    expect(wrapper.type()).toEqual('button')
+    expect(wrapper.hasClass(styleButton.default)).toEqual(true)
+    expect(wrapper.hasClass(style.pause)).toEqual(true)
+    expect(wrapper.hasClass(style.hide)).toEqual(false)
+
+    wrapper.simulate('click')
+    expect(onClickHandler.calledOnce).toEqual(true)
   })
 })
 
 describe('PomodoroPause not started and not paused', () => {
-  let component
-
-  const onClickHandler = () => {}
-
-  beforeEach(() => {
-    component = sd.shallowRender(createElement(
-      PomodoroPause, { started: false, paused: false, onClick: onClickHandler }
-    ))
-  })
-
   it('should render the pause button', () => {
-    expect(component.type).toEqual('button')
-    expect(component.props.onClick).toEqual(onClickHandler)
-    expect(component.props.className).toEqual(`${styleButton.default} ${style.hide}`)
+    const onClickHandler = sinon.spy()
+
+    const wrapper = shallow(
+      <PomodoroPause started={false} paused={false} onClick={onClickHandler} />
+    )
+
+    expect(wrapper.type()).toEqual('button')
+    expect(wrapper.hasClass(styleButton.default)).toEqual(true)
+    expect(wrapper.hasClass(style.pause)).toEqual(false)
+    expect(wrapper.hasClass(style.hide)).toEqual(true)
+
+    wrapper.simulate('click')
+    expect(onClickHandler.calledOnce).toEqual(true)
   })
 })

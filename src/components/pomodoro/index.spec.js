@@ -1,20 +1,14 @@
-import { createElement } from 'react'
-import sd from 'skin-deep'
+import React from 'react'
+import { shallow } from 'enzyme'
 
-import Pomodoro from '.'
+import Pomodoro from './index'
 import style from './style.css'
 
 describe('Pomodoro', () => {
-  let component
+  it('should render the <Pomodoro /> component', () => {
+    const wrapper = shallow(<Pomodoro />)
 
-  beforeEach(() => {
-    component = sd.shallowRender(createElement(
-      Pomodoro
-    ))
-  })
-
-  it('should show total count', () => {
-    expect(component.type).toEqual('div')
-    expect(component.props.className).toEqual(style.component)
+    expect(wrapper.type()).toEqual('div')
+    expect(wrapper.hasClass(style.component)).toEqual(true)
   })
 })

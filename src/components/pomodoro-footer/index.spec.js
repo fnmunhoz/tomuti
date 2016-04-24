@@ -1,19 +1,13 @@
-import { createElement } from 'react'
-import sd from 'skin-deep'
+import React from 'react'
+import { shallow } from 'enzyme'
 
 import PomodoroFooter from '.'
 
 describe('PomodoroFooter', () => {
-  let component
-
-  beforeEach(() => {
-    component = sd.shallowRender(createElement(
-      PomodoroFooter, { count: 1 }
-    ))
-  })
-
   it('should show total count', () => {
-    expect(component.type).toEqual('p')
-    expect(component.props.children).toEqual('Total: 1')
+    const wrapper = shallow(<PomodoroFooter count='1' />)
+
+    expect(wrapper.type()).toEqual('p')
+    expect(wrapper.text()).toEqual('Total: 1')
   })
 })
